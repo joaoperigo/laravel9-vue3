@@ -26,6 +26,7 @@ const getPhoto = () => {
         }
     }
     return photo
+    
 }
 
 const updatePhoto = (e) => {
