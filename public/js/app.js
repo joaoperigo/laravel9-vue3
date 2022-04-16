@@ -15396,8 +15396,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context2.sent;
                 products.value = response.data.products;
+                console.log('products', response);
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -15501,13 +15502,23 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('type', form.value.type);
       formData.append('quantity', form.value.quantity);
       formData.append('price', form.value.price);
+      console.log(form.value.name);
+      console.log(form.value.description);
+      console.log(form.value.photo);
+      console.log(form.value.type);
+      console.log(form.value.quantity);
+      console.log(form.value.price); // formasd = JSON.stringify(formData)
+      // console.log(formasd)
+
       axios.post("/api/add_product/", formData).then(function (response) {
         form.value.name = '', form.value.description = '', form.value.photo = '', form.value.type = '', form.value.quantity = '', form.value.price = '', router.push('/');
         toast.fire({
-          icon: "succces",
+          icon: "success",
           title: "Product add successfully"
         });
-      })["catch"](function (error) {});
+      })["catch"](function (error) {
+        console.error(error.response.data);
+      });
     };
 
     var __returned__ = {
@@ -15896,7 +15907,7 @@ var toast = sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default
   position: 'top-end',
   showConfirmButton: false,
   timer: 3000,
-  timeProgressBar: true
+  timerProgressBar: true
 });
 window.toast = toast; // import { create } from "lodash";
 

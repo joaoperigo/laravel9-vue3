@@ -17,19 +17,19 @@ class ProductController extends Controller
         ], 200);
     }
 
-    public function add_product(Request $request) {
+    public function add_product( Request $request ) {
 
-        $products = new Product();
+        $product = new Product();
 
         $product->name = $request->name;
         $product->description = $request->description;
 
-        if($request->photo!="") {
+        if( $request->photo != "" ) {
             $strpos = strpos($request->photo, ';');
             $sub = substr($request->photo,0,$strpos);
             $ex = explode('/', $sub)[1];
             $name = time().".".$ex;
-            $img = IMAGE::make($request->photo)->resize(200,200);
+            $img = Image::make($request->photo)->resize(200,200);
             $upload_path = public_path()."/upload/";
             $img->save($upload_path.$name);
             $product->photo = $name;

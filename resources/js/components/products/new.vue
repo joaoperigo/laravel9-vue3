@@ -44,7 +44,9 @@ const updatePhoto = (e) => {
 }
 
 const saveProduct = () => {
+    
     const formData = new FormData()
+    
     formData.append('name', form.value.name)
     formData.append('description', form.value.description)
     formData.append('photo', form.value.photo)
@@ -52,6 +54,15 @@ const saveProduct = () => {
     formData.append('quantity', form.value.quantity)
     formData.append('price', form.value.price)
 
+    console.log(form.value.name)
+    console.log(form.value.description)
+    console.log(form.value.photo)
+    console.log(form.value.type)
+    console.log(form.value.quantity)
+    console.log(form.value.price)
+
+    // formasd = JSON.stringify(formData)
+    // console.log(formasd)
     axios.post("/api/add_product/", formData)
     .then((response) => {
         form.value.name='',
@@ -64,13 +75,13 @@ const saveProduct = () => {
         router.push('/')
 
         toast.fire({
-            icon: "succces",
+            icon: "success",
             title: "Product add successfully"
         })
 
     })
     .catch((error) => {
-
+        console.error(error.response.data);
     })
 }
 

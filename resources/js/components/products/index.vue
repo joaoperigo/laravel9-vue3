@@ -17,6 +17,7 @@
     const getProducts = async () => {
         let response = await axios.get("/api/get_all_product")
         products.value = response.data.products
+        console.log('products', response)
     }
 
     const ourImage = (img) => {
