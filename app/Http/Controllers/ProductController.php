@@ -84,4 +84,14 @@ class ProductController extends Controller
 
     }
 
+    public function delete_product($id) {
+        $product = Product::findOrFail($id);
+        $image_path = public_path()."/upload/";
+        $image = $image_path . $product->photo;
+        if(file_exists($image)) {
+            @unlink($image);
+        }
+        $product->delete();
+    }
+
 }
