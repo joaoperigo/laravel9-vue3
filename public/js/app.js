@@ -15496,11 +15496,11 @@ __webpack_require__.r(__webpack_exports__);
     var saveProduct = function saveProduct() {
       var formData = new FormData();
       formData.append('name', form.value.name);
-      formData.append('description', form.value.name);
-      formData.append('photo', form.value.name);
-      formData.append('type', form.value.name);
-      formData.append('quantity', form.value.name);
-      formData.append('price', form.value.name);
+      formData.append('description', form.value.description);
+      formData.append('photo', form.value.photo);
+      formData.append('type', form.value.type);
+      formData.append('quantity', form.value.quantity);
+      formData.append('price', form.value.price);
       axios.post("/api/add_product/", formData).then(function (response) {
         form.value.name = '', form.value.description = '', form.value.photo = '', form.value.type = '', form.value.quantity = '', form.value.price = '', router.push('/');
         toast.fire({
@@ -15894,9 +15894,9 @@ window.Swal = (sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___defa
 var toast = sweetalert2_dist_sweetalert2_js__WEBPACK_IMPORTED_MODULE_0___default().mixin({
   toast: true,
   position: 'top-end',
-  showCOnfirmButton: false,
+  showConfirmButton: false,
   timer: 3000,
-  timeProgress: true
+  timeProgressBar: true
 });
 window.toast = toast; // import { create } from "lodash";
 

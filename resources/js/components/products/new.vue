@@ -16,6 +16,7 @@ let form = ref({
 const router = useRouter()
 
 const getPhoto = () => {
+
     let photo = "/upload/image.png"
     if(form.value.photo) {
         if(form.value.photo.indexOf('base64') != -1) {
@@ -45,11 +46,11 @@ const updatePhoto = (e) => {
 const saveProduct = () => {
     const formData = new FormData()
     formData.append('name', form.value.name)
-    formData.append('description', form.value.name)
-    formData.append('photo', form.value.name)
-    formData.append('type', form.value.name)
-    formData.append('quantity', form.value.name)
-    formData.append('price', form.value.name)
+    formData.append('description', form.value.description)
+    formData.append('photo', form.value.photo)
+    formData.append('type', form.value.type)
+    formData.append('quantity', form.value.quantity)
+    formData.append('price', form.value.price)
 
     axios.post("/api/add_product/", formData)
     .then((response) => {
