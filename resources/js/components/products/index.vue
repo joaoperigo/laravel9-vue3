@@ -88,32 +88,34 @@
                 <!-- <p class="table--heading--col5">&#32;</p> -->
                 <p class="table--heading--col5">actions</p>
             </div>
-
-            <div class="table--items products__list__item" v-for="item in products" :key="item.id" v-if="products.length > 0">
-                <div class="products__list__item--imgWrapper">
-                    <img class="products__list__item--img" :src="ourImage(item.photo)"  style="height: 40px;" v-if="item.photo">
-                </div>
-                <a href="# " class="table--items--col2">
-                    {{ item.name }}
-                </a>
-                <p class="table--items--col2">
-                    {{ item.type }}
-                </p>
-                <p class="table--items--col3">
-                    {{ item.quantity }}
-                </p>     
-                <div>     
-                    <button class="btn-icon btn-icon-success" @click="onEdit(item.id)">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button class="btn-icon btn-icon-danger" @click="deleteProduct(item.id)">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
+            <div  v-if="products.length > 0">
+                <div class="table--items products__list__item" v-for="item in products" :key="item.id">
+                    <div class="products__list__item--imgWrapper">
+                        <img class="products__list__item--img" :src="ourImage(item.photo)"  style="height: 40px;" v-if="item.photo">
+                    </div>
+                    <a href="# " class="table--items--col2">
+                        {{ item.name }}
+                    </a>
+                    <p class="table--items--col2">
+                        {{ item.type }}
+                    </p>
+                    <p class="table--items--col3">
+                        {{ item.quantity }}
+                    </p>     
+                    <div>     
+                        <button class="btn-icon btn-icon-success" @click="onEdit(item.id)">
+                            <fa icon="pencil-alt" />
+                        </button>
+                        <button class="btn-icon btn-icon-danger" @click="deleteProduct(item.id)">
+                            <fa icon="trash-alt" />
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="table--items products__list__item" v-else>
                 <p>Product not found</p>
             </div>
+
         </div>
     </div>
 </template>
